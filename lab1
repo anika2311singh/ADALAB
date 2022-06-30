@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include<time.h>
+#include<stdlib.h>
+void delay(){
+    int u;
+    for(u=0;u<400;u++);
+}
+int lsearch(int arr[],int size ,int x){
+    int rec;
+    size--;
+    if(size>=0){
+        if(arr[size]==x){
+             printf("The value found at %d",size);
+        
+        return size;}
+        else 
+        lsearch(arr,size,x);
+        
+    }
+else {
+     printf("The value not found ");
+
+    return -1;}
+}
+int bisearch(int arr[],int x,int startindex,int endindex){
+     
+   if(endindex>startindex){
+    int mididex=startindex+(endindex-startindex)/2;
+    if(arr[mididex]==x)
+    {
+        printf("Value found at %d",mididex);
+        return mididex;
+    }
+     if(x>arr[mididex]){
+        
+    startindex=mididex+1;
+    return bisearch(arr,x,startindex,endindex);
+    }
+    else 
+    {
+        endindex=mididex-1;
+    return bisearch(arr,x,startindex,endindex);
+    }
+   }
+     printf("The value not found ");
+     return -1;
+}
+
+int main()
+{
+    clock start,end;
+    
+    int arr[1000],n,key,choice;
+    printf("Enter size of array:");
+    scanf("%d",&n);
+    printf("Enter the elements:\n");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("Enter the value to be searched");
+    scanf("%d",&key);
+    int size =sizeof(arr)/sizeof(arr[0]);
+    
+    printf("MENU\n1.BINARY\n2.LINEAR\nEnter the choice:");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+   case 1: bisearch(arr,key,0,n-1);
+           break;
+   case 2:
+         
+          lsearch(arr,size,key);
+           break;
+   default: printf("Wrong choice");
+    }
+
+    return 0;
+}
