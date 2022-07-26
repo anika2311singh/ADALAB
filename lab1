@@ -59,17 +59,17 @@ int main()
     }
     printf("Enter the value to be searched");
     scanf("%d",&key);
-    int size =sizeof(arr)/sizeof(arr[0]);
+    int size =size-1;
     
     printf("MENU\n1.BINARY\n2.LINEAR\nEnter the choice:");
     scanf("%d",&choice);
     switch(choice)
     {
-   case 1: bisearch(arr,key,0,n-1);
+   case 1: bisearch(arr,key,0,size);
            break;
    case 2:
          
-          lsearch(arr,size,key);
+          lsearch(arr,n,key);
            break;
    default: printf("Wrong choice");
     }
