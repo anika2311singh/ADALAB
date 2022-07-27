@@ -10,7 +10,6 @@ int lsearch(int arr[],int size ,int x){
     size--;
     if(size>=0){
         if(arr[size]==x){
-             printf("The value found at %d",size);
         
         return size;}
         else 
@@ -18,17 +17,16 @@ int lsearch(int arr[],int size ,int x){
         
     }
 else {
-     printf("The value not found ");
 
     return -1;}
 }
 int bisearch(int arr[],int x,int startindex,int endindex){
      
-   if(endindex>startindex){
+   if(endindex>=startindex){
     int mididex=startindex+(endindex-startindex)/2;
     if(arr[mididex]==x)
     {
-        printf("Value found at %d",mididex);
+        
         return mididex;
     }
      if(x>arr[mididex]){
@@ -42,37 +40,66 @@ int bisearch(int arr[],int x,int startindex,int endindex){
     return bisearch(arr,x,startindex,endindex);
     }
    }
-     printf("The value not found ");
      return -1;
 }
 
 int main()
 {
-    clock start,end;
+    clock_t start,end;
     
-    int arr[1000],n,key,choice;
-    printf("Enter size of array:");
-    scanf("%d",&n);
-    printf("Enter the elements:\n");
-    for(int i=0;i<n;i++){
-        scanf("%d",&arr[i]);
-    }
-    printf("Enter the value to be searched");
-    scanf("%d",&key);
+    int arr[10000],n,key,choice,temp;
+    
+
     int size =size-1;
-    
+    while(1){
     printf("MENU\n1.BINARY\n2.LINEAR\nEnter the choice:");
     scanf("%d",&choice);
     switch(choice)
     {
-   case 1: bisearch(arr,key,0,size);
+   case 1:
+    n=1000;
+   while(n<5000){
+   for(int i=0;i<n;i++){
+       arr[i]=i;}
+       key=arr[n-1];
+   start=clock();
+   int biSearch=bisearch(arr,key,0,n);
+       if(biSearch==-1){
+           printf("Key not found\n");
+       }
+       else printf("Key found at %d\n",biSearch);
+       for(int j=0;j<5000000;j++){
+           temp=38/600;
+       }
+       end=clock();
+       printf("TIME FOR N=%d IS %f SECS\n",n,(((double)(end-start))/CLOCKS_PER_SEC));
+       n=n+1000;
+   }
            break;
    case 2:
+        n=1000;
+         while(n<5000){
+             
+         for(int i=0;i<n;i++ ){
+             arr[i]=i;
+         }
+         key=arr[n-1];
+         start=clock();
          
-          lsearch(arr,n,key);
+          int Lsearch=lsearch(arr,n,key);
+             if(Lsearch==-1){
+                 printf("key not found\n");
+             }else printf("key found at %d\n",Lsearch);
+             for(int f=0;f<500000;f++) 
+             temp=38/600;
+             end =clock();
+             printf("TIME FOR N=%d IS %f SECs\n",n,(((double)(end-start))/CLOCKS_PER_SEC));
+             n=n+1000;
+             
+         }
            break;
    default: printf("Wrong choice");
     }
-
+}
     return 0;
 }
