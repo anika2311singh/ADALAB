@@ -24,12 +24,12 @@ int main() {
             if(indeg[i]==0&&!visited[i]){
                 printf("%d ",i);
                 visited[i]=1;
-            }
+            
             for(int j=1;j<=n;j++){
                 if(a[i][j]){
                     indeg[j]--;
                 }
-               
+               }
             }
             
         }
