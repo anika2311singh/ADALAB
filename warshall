@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+int a[20][20],k,v,i,j,n,u,r;
+int max(int,int);
+int max(int a,int b){
+if(a>b)
+return a;
+else
+return b;
+}
+int warshall(int a[20][20],int n){
+for(i=0;i<n;i++){
+for(j=0;j<n;j++){
+for(k=0;k<n;k++){
+p[i][j]=max(p[i][j],p[i][k]&&p[k][j]);
+}}}
+return 0;}
+int main(){
+a[20][20]={
+0};
+printf("Enter the number of vertices :\n");
+scanf("%d",&n);
+printf("Enter the number of edges:\n");
+scanf("%d",&v);
+for(i=0;i<v;i++){
+printf("Enter the vertices of edge %d",i);
+scanf("%d %d",&u,&r);
+p[u][r]=1;
+}
+
+printf("Matrix of input data:\n");
+
+for(i=0;i<n;i++){
+for(j=0;j<n;j++){
+printf("%d ",&a[i][j]);
+}}
+warshall(p,n);
+printf("transative closure:\n");
+for(i=0;i<n;i++){
+for(j=0;j<n;j++){
+printf("%d ",&a[i][j]);
+}}
+
+
+}
