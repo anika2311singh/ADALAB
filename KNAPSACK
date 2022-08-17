@@ -1,0 +1,23 @@
+#include <stdio.h>
+int max(int a ,int b){
+    if(a>b)
+    return a;
+    else 
+    return b;
+}
+int knapsack(int w ,int wt[],int vl[],int n){
+    if(n==0)
+    return 0;
+    if(wt[n-1]>w){
+        return knapsack(w,wt,vl,n-1);
+        
+    }
+    else 
+    return max(vl[n-1]+knapsack(w-wt[n-1],wt,vl,n-1),knapsack(w,wt,vl,n-1));
+}
+int main() {
+    int w=40,wt[]={24,5,22,44},vl[]={244,500,3,55},n=4;
+    printf("%d",knapsack(w,wt,vl,n));
+
+    return 0;
+}
